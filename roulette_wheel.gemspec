@@ -14,4 +14,6 @@ Gem::Specification.new do |gem|
   gem.name          = "roulette_wheel"
   gem.require_paths = ["lib"]
   gem.version       = RouletteWheel::VERSION
+
+  gem.add_development_dependency "rspec"
 end
