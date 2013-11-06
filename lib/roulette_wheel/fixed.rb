@@ -20,6 +20,7 @@ class RouletteWheel::Fixed
 
   def set_rest(prize)
     @rest_prize = prize
+    return self
   end
 
   def spin
