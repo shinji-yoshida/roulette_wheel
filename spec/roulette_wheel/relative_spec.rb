@@ -35,5 +35,9 @@ describe RouletteWheel::Relative do
       rand_generator.stub(:rand).and_return(10 + 15 + 29)
       subject.spin().should eq 'third pockets'
     end
+
+    it 'should work with only one pocket' do
+      RouletteWheel::Relative.new.add_pocket(10, 'solo pocket').spin.should eq 'solo pocket'
+    end
   end
 end
