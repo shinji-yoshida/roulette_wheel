@@ -4,8 +4,10 @@ require File.expand_path('../lib/roulette_wheel/version', __FILE__)
 Gem::Specification.new do |gem|
   gem.authors       = ["shinji-yoshida"]
   gem.email         = ["yoshida.shinji.gm@gmail.com"]
-  gem.description   = %q{TODO: Write a gem description}
-  gem.summary       = %q{TODO: Write a gem summary}
+  gem.description   = <<-EOF
+    roulette_wheel is random value selector with given discrete probability distribution.
+  EOF
+  gem.summary       = %q{roulette_wheel is random value selector with given discrete probability distribution.}
   gem.homepage      = ""
 
   gem.files         = `git ls-files`.split($\)
