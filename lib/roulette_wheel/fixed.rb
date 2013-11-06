@@ -23,6 +23,10 @@ class RouletteWheel::Fixed
     return self
   end
 
+  def rest
+    @rest_prize
+  end
+
   def spin
     pocket = @rand_generator.rand
     @pockets.each do |g|
