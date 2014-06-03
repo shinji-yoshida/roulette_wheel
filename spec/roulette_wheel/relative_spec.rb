@@ -40,4 +40,19 @@ describe RouletteWheel::Relative do
       expect(RouletteWheel::Relative.new.add_pocket(10, 'solo pocket').spin).to eq 'solo pocket'
     end
   end
+
+  describe 'has_pocket?' do
+    subject{
+      RouletteWheel::with_relative_prob {
+        pocket :apple, size: 2
+        pocket :banana, size: 3
+        pocket :banana, size: 2
+      }
+    }
+
+    it{is_expected.to have_pocket(:apple, size: 2)}
+    it{is_expected.to have_pocket(:banana, size: 3)}
+    it{is_expected.to have_pocket(:banana, size: 2)}
+    it{is_expected.not_to have_pocket(:banana, size: 4)}
+  end
 end

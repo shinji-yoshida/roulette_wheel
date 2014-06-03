@@ -36,4 +36,21 @@ describe RouletteWheel::Fixed do
       expect(subject.spin()).to eq 'rest pocket'
     end
   end
+
+  describe 'has_pocket?' do
+    subject{
+      RouletteWheel::with_fixed_prob {
+        pocket :apple, size: 0.2
+        pocket :banana, size: 0.3
+        pocket :banana, size: 0.2
+        rest :candy
+      }
+    }
+
+    it{is_expected.to have_pocket(:apple, size: 0.2)}
+    it{is_expected.to have_pocket(:banana, size: 0.3)}
+    it{is_expected.to have_pocket(:banana, size: 0.2)}
+    it{is_expected.not_to have_pocket(:banana, size: 0.4)}
+    it{is_expected.not_to have_pocket(:candy, size: 0.3)} # rest is special...
+  end
 end

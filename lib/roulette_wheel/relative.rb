@@ -29,4 +29,9 @@ class RouletteWheel::Relative
   def pockets
     return @pockets
   end
+
+  def has_pocket?(prize, args)
+    size = args[:size]
+    pockets.include?({size: size, prize: prize})
+  end
 end
