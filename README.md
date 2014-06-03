@@ -11,7 +11,7 @@ TODO: Write a gem description
 
 Add this line to your application's Gemfile:
 
-    gem 'roulette_wheel', github: 'shinji-yoshida/roulette_wheel', tag: 'v0.1.0'
+    gem 'roulette_wheel', github: 'shinji-yoshida/roulette_wheel', tag: 'v0.2.0'
 
 And then execute:
 
@@ -27,6 +27,11 @@ And then execute:
       rest :buzz
     }
 
+    fixed_prob_roulette.has_pocket?(:foo, size: 0.1)
+    #  returns true
+    fixed_prob_roulette.has_pocket?(:buzz, size: 0.7)
+    #  returns false. rest is not pocket.
+
     fixed_prob_roulette.spin
     #  returns :foo with probability 0.1, :bar with 0.2, or :buzz with 0.7
 
@@ -35,6 +40,9 @@ And then execute:
       pocket :bar, size: 3
       pocket :buzz, size: 4
     }
+
+    relative_prob_roulette.has_pocket?(:foo, size: 2)
+    #  returns true
 
     relative_prob_roulette.spin
     #  returns :foo with probability 2/9, :bar with 3/9, or :buzz with 4/9
