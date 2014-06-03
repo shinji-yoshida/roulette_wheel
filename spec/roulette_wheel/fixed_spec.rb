@@ -12,28 +12,28 @@ describe RouletteWheel::Fixed do
     end
 
     it 'should call rand without args' do
-      rand_generator.should_receive(:rand).with(no_args).and_return(0)
+      expect(rand_generator).to receive(:rand).and_return(0)
       subject.spin()
     end
 
     it 'draw randomly according to pocket sizes' do
-      rand_generator.stub(:rand).and_return(0)
-      subject.spin().should eq 'first pocket'
+      allow(rand_generator).to receive(:rand).and_return(0)
+      expect(subject.spin()).to eq 'first pocket'
 
-      rand_generator.stub(:rand).and_return(0.1 - 0.0001)
-      subject.spin().should eq 'first pocket'
+      allow(rand_generator).to receive(:rand).and_return(0.1 - 0.0001)
+      expect(subject.spin()).to eq 'first pocket'
 
-      rand_generator.stub(:rand).and_return(0.1 + 0.0001)
-      subject.spin().should eq 'second pocket'
+      allow(rand_generator).to receive(:rand).and_return(0.1 + 0.0001)
+      expect(subject.spin()).to eq 'second pocket'
 
-      rand_generator.stub(:rand).and_return(0.1 + 0.25 - 0.0001)
-      subject.spin().should eq 'second pocket'
+      allow(rand_generator).to receive(:rand).and_return(0.1 + 0.25 - 0.0001)
+      expect(subject.spin()).to eq 'second pocket'
 
-      rand_generator.stub(:rand).and_return(0.1 + 0.25 + 0.0001)
-      subject.spin().should eq 'rest pocket'
+      allow(rand_generator).to receive(:rand).and_return(0.1 + 0.25 + 0.0001)
+      expect(subject.spin()).to eq 'rest pocket'
 
-      rand_generator.stub(:rand).and_return(1)
-      subject.spin().should eq 'rest pocket'
+      allow(rand_generator).to receive(:rand).and_return(1)
+      expect(subject.spin()).to eq 'rest pocket'
     end
   end
 end

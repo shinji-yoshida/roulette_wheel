@@ -9,8 +9,8 @@ describe RouletteWheel::RelativeBuilder do
         pocket :buzz, size: 9
       }
     }
-    it {subject.pockets.should include({size: 3, prize: :foo})}
-    it {subject.pockets.should include({size: 5, prize: :bar})}
-    it {subject.pockets.should include({size: 9, prize: :buzz})}
+    it {expect(subject.pockets).to include({size: 3, prize: :foo})}
+    it {expect(subject.pockets).to include({size: 5, prize: :bar})}
+    it {expect(subject.pockets).to include({size: 9, prize: :buzz})}
   end
 end

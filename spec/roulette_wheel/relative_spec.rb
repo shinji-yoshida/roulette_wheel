@@ -12,32 +12,32 @@ describe RouletteWheel::Relative do
     end
 
     it 'should call rand by sum of pocket sizes' do
-      rand_generator.should_receive(:rand).with(10 + 15 + 30).and_return(0)
+      expect(rand_generator).to receive(:rand).with(10 + 15 + 30).and_return(0)
       subject.spin()
     end
 
     it 'draw randomly according to pocket sizes' do
-      rand_generator.stub(:rand).and_return(0)
-      subject.spin().should eq 'first pockets'
+      allow(rand_generator).to receive(:rand).and_return(0)
+      expect(subject.spin()).to eq 'first pockets'
 
-      rand_generator.stub(:rand).and_return(9)
-      subject.spin().should eq 'first pockets'
+      allow(rand_generator).to receive(:rand).and_return(9)
+      expect(subject.spin()).to eq 'first pockets'
 
-      rand_generator.stub(:rand).and_return(10)
-      subject.spin().should eq 'second pockets'
+      allow(rand_generator).to receive(:rand).and_return(10)
+      expect(subject.spin()).to eq 'second pockets'
 
-      rand_generator.stub(:rand).and_return(10 + 14)
-      subject.spin().should eq 'second pockets'
+      allow(rand_generator).to receive(:rand).and_return(10 + 14)
+      expect(subject.spin()).to eq 'second pockets'
 
-      rand_generator.stub(:rand).and_return(10 + 15)
-      subject.spin().should eq 'third pockets'
+      allow(rand_generator).to receive(:rand).and_return(10 + 15)
+      expect(subject.spin()).to eq 'third pockets'
 
-      rand_generator.stub(:rand).and_return(10 + 15 + 29)
-      subject.spin().should eq 'third pockets'
+      allow(rand_generator).to receive(:rand).and_return(10 + 15 + 29)
+      expect(subject.spin()).to eq 'third pockets'
     end
 
     it 'should work with only one pocket' do
-      RouletteWheel::Relative.new.add_pocket(10, 'solo pocket').spin.should eq 'solo pocket'
+      expect(RouletteWheel::Relative.new.add_pocket(10, 'solo pocket').spin).to eq 'solo pocket'
     end
   end
 end

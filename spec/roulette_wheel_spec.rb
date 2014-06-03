@@ -10,8 +10,8 @@ describe RouletteWheel do
     }
 
     it {should be_kind_of(RouletteWheel::Fixed)}
-    it {subject.pockets.should include({size: 0.1, prize: :foo})}
-    it {subject.rest.should eq :bar}
+    it {expect(subject.pockets).to include({size: 0.1, prize: :foo})}
+    it {expect(subject.rest).to eq :bar}
   end
 
   describe 'with_relative_prob' do
@@ -23,7 +23,7 @@ describe RouletteWheel do
     }
 
     it {should be_kind_of(RouletteWheel::Relative)}
-    it {subject.pockets.should include({size: 3, prize: :foo})}
-    it {subject.pockets.should include({size: 4, prize: :bar})}
+    it {expect(subject.pockets).to include({size: 3, prize: :foo})}
+    it {expect(subject.pockets).to include({size: 4, prize: :bar})}
   end
 end

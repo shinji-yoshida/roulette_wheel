@@ -9,8 +9,8 @@ describe RouletteWheel::FixedBuilder do
         rest :buzz
       }
     }
-    it {subject.pockets.should include({size: 0.13, prize: :foo})}
-    it {subject.pockets.should include({size: 0.2, prize: :bar})}
-    it {subject.rest.should eq :buzz}
+    it {expect(subject.pockets).to include({size: 0.13, prize: :foo})}
+    it {expect(subject.pockets).to include({size: 0.2, prize: :bar})}
+    it {expect(subject.rest).to eq :buzz}
   end
 end
