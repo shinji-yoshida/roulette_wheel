@@ -18,4 +18,6 @@ Gem::Specification.new do |gem|
   gem.version       = RouletteWheel::VERSION
 
   gem.add_development_dependency "rspec"
+  gem.add_development_dependency "turnip"
+  gem.add_development_dependency "abanalyzer"
 end
