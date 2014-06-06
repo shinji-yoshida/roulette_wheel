@@ -10,10 +10,12 @@ class RouletteWheel::Fixed
   end
 
   def add_pocket(size, prize)
+    raise "error: size < 0" if size < 0
+
     @pockets.push({size: size, prize: prize})
     @total_size += size
 
-    raise "total_size is greater than 1" if @total_size > 1
+    raise "error: total_size is greater than 1" if @total_size > 1
 
     return self
   end

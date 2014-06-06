@@ -9,6 +9,9 @@ class RouletteWheel::Relative
   end
 
   def add_pocket(size, prize)
+    raise "error: size < 0" if size < 0
+    raise "error: size is not int" unless size.is_a? Integer
+
     @pockets.push({size: size, prize: prize})
     @total_size += size
 
@@ -23,7 +26,7 @@ class RouletteWheel::Relative
         return g[:prize]
       end
     end
-    raise "never reach here"
+    raise "error: total_size is #{@total_size}"
   end
 
   def pockets
